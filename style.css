@@ -1,0 +1,129 @@
+/* 基础样式：重置和设置字体 */
+body {
+    font-family: 'serif', 'SimSun', 'STSong', serif;
+    
+    /* ---------------------------------------------------- */
+    /* 关键修正：确保背景颜色和渐变正确应用 */
+    
+    /* 设置一个深色保底 */
+    background-color: #000000; 
+    
+    /* 径向渐变：从中心浅色（#1f1430，深紫）向外扩散到纯黑（#000000）*/
+    background-image: radial-gradient(circle at center, #1f1430 0%, #000000 75%);
+    
+    /* 确保渐变覆盖整个视口，不重复 */
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    /* ---------------------------------------------------- */
+
+    color: #f5e6c7;
+    margin: 0;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+    overflow: hidden;
+}
+/* 容器样式：确保垂直堆叠和水平居中 */
+#container {
+    /* ... 保持原有样式 ... */
+    max-width: 500px; /* 强制限制容器的最大宽度，以保证内容居中 */
+    width: 90%;
+    
+    display: flex;
+    flex-direction: column; 
+    align-items: center; /* 确保子元素（H1, 求签桶）在容器内居中 */
+}
+
+/* 标题样式：微调到左侧 */
+h1 {
+    font-size: 3.5em;
+    color: #f5e6c7;
+    margin-bottom: 50px;
+    letter-spacing: 5px;
+    
+    align-self: flex-start; 
+    text-align: left;
+    
+    /* 关键修改：从 5% 减小到 2%，实现轻微左移 */
+    margin-left: 30%; 
+    width: 90%;
+}
+
+#barrel-area {
+    position: relative;
+    width: 300px; /* 尝试减小或调整到更匹配您图片的尺寸 */
+    height: 350px; /* 尝试减小或调整到更匹配您图片的尺寸 */
+    margin: 30px auto 30px auto; 
+    cursor: pointer;
+}
+
+/* 主体图和发光图：设置绝对定位以堆叠 */
+#barrel-body, #barrel-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 发光层样式：初始透明，并添加过渡效果 */
+#barrel-glow {
+    opacity: 0; 
+    filter: brightness(1.5);
+    transition: opacity 0.5s ease-out, transform 0.1s;
+}
+
+/* 结果框样式：初始隐藏，无边框，柔和阴影 */
+#result-box {
+    display: none; 
+    min-height: 150px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    border: none; 
+    border-radius: 10px;
+    background-color: rgba(20, 20, 20, 0.7);
+    color: #fff;
+    transition: all 0.5s ease-in-out;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    width: 100%; 
+    max-width: 500px;
+}
+
+#result-title {
+    font-size: 2.2em;
+    color: #ffcc00; 
+    margin-top: 0;
+}
+
+#result-text {
+    font-size: 1.3em;
+    line-height: 1.6;
+}
+
+/* 新增：状态提示信息区域样式 */
+#status-message {
+    font-size: 1.5em;
+    color: #ffcc00;
+    margin-top: 20px;
+    padding: 10px 0;
+    min-height: 1.5em; /* 确保高度稳定，防止内容变化时页面跳动 */
+}
+
+/* ************ 动画样式 (晃动) ************ */
+.shaking {
+    animation: shake 0.3s ease-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translate(0, 0); }
+    10%, 30%, 50%, 70%, 90% { transform: translate(-5px, 0); }
+    20%, 40%, 60%, 80% { transform: translate(5px, 0); }
+}
+
+/* 删除原有的按钮和按钮容器样式 */
+/* #draw-button, #button-wrapper 样式已移除 */
